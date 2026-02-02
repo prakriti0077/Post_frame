@@ -8,7 +8,11 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: '*', // For now, allow all. Once deployed, change this to your Vercel URL.
+    credentials: true
+}));
+
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
@@ -21,6 +25,9 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/posts', require('./routes/postRoutes'));
+// ... imports
 
+
+// ... rest of code
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
