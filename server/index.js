@@ -9,7 +9,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: '*', // For now, allow all. Once deployed, change this to your Vercel URL.
+    origin: 'https://posts-jade.vercel.app/', // For now, allow all. Once deployed, change this to your Vercel URL.
     credentials: true
 }));
 
